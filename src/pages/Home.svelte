@@ -1,10 +1,28 @@
 <script lang="ts">
-    export let name: string;
+    let id: string;
+    let pw: string;
 </script>
 
 <main>
-    <h1>Hello {name}!</h1>
-    <p>Home Dir.</p>
+    <h1>TeamO2 DEV TEAM</h1>
+
+    <form>
+        <label>
+            ID :
+            <input
+                    type="text"
+                    bind:value={id}
+            />
+        </label>
+        <label>
+            Pw :
+            <input
+                    type="password"
+                    bind:value={pw}
+            />
+        </label>
+        <button on:click={() => { alert(`id : ${id}, pw : ${pw}`) }}>Login</button>
+    </form>
 </main>
 
 <style>
