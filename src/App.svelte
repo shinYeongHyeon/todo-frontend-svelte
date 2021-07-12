@@ -6,6 +6,14 @@
 
 <Router {routes} />
 
+<style>
+    :global(main) {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1em;
+    }
+</style>
+
 <svelte:head>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

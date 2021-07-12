@@ -11,8 +11,6 @@
     let loginFailDialogShow = false;
 
     function tryToLogin() {
-        console.log(id);
-
         $accounts.some((account) => {
             if (account.id === id && account.password === pw) {
                 $logonIndex = account.index;
@@ -28,16 +26,18 @@
 </script>
 
 <main>
-    <h1>TeamO2 DEV TEAM</h1>
+    <section class="login-section">
+        <h1>TeamO2 DEV TEAM (w/ Svelte)</h1>
 
-    <form>
         <div>
             <DefaultInput
+                    type="text"
                     bind:textValue={id}
                     label="ID"
                     helperText="아이디를 입력하세요"
             />
             <DefaultInput
+                    type="password"
                     bind:textValue={pw}
                     label="Password"
                     helperText="비밀번호를 입력하세요"
@@ -53,7 +53,7 @@
                     on:click={() => { alert(`close`) }}
             />
         </div>
-    </form>
+    </section>
 </main>
 
 <Dialog
@@ -67,3 +67,13 @@
         <DefaultButton buttonString="확인" />
     </Actions>
 </Dialog>
+
+<style>
+    .login-section {
+        display: flex;
+        margin-top: 2em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
