@@ -4,12 +4,15 @@
     import { logonIndex, accounts, logonAccount } from '../stores/accountStores';
     import ProgressButton from '../component/buttons/ProgressButton.svelte';
     import DefaultButton from '../component/buttons/DefaultButton.svelte';
+    import DefaultInput from '../component/inputs/DefaultInput.svelte';
 
     let id: string = '';
     let pw: string = '';
     let loginFailDialogShow = false;
 
     function tryToLogin() {
+        console.log(id);
+
         $accounts.some((account) => {
             if (account.id === id && account.password === pw) {
                 $logonIndex = account.index;
@@ -29,20 +32,16 @@
 
     <form>
         <div>
-            <label>
-                ID :
-                <input
-                        type="text"
-                        bind:value={id}
-                />
-            </label>
-            <label>
-                Pw :
-                <input
-                        type="password"
-                        bind:value={pw}
-                />
-            </label>
+            <DefaultInput
+                    bind:textValue={id}
+                    label="ID"
+                    helperText="아이디를 입력하세요"
+            />
+            <DefaultInput
+                    bind:textValue={pw}
+                    label="Password"
+                    helperText="비밀번호를 입력하세요"
+            />
         </div>
         <div>
             <ProgressButton
