@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { logonIndex, logonAccount } from '../stores/accountStores';
+    import { logonIndex } from '../stores/accountStores';
     import Login from './Login.svelte';
-
+    import TodoBoard from './TodoBoard.svelte';
 </script>
 
 <main>
     {#if $logonIndex === 0 }
         <Login />
     {:else}
-        <h2> {$logonAccount.id}, Hello </h2>
+        <TodoBoard logonIndex={$logonIndex}/>
     {/if}
 </main>

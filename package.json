@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@smui/button": "^4.2.0",
+    "dayjs": "^1.10.6",
     "sirv-cli": "^1.0.0",
     "svelte-material-ui": "^4.2.0",
     "svelte-router-spa": "^6.0.2"
