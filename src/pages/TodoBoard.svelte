@@ -1,17 +1,21 @@
 <script>
   import { userTodos } from '../stores/todoStores';
+  import { logonIndex } from '../stores/accountStores';
   import TodoCard from '../component/cards/TodoCard.svelte';
+  import Header from './page-component/Header.svelte';
 
-  export let logonIndex = 0;
+  export let logonAccount;
+
   let accountsTodos = [];
   $userTodos.some((userTodo) => {
-    if (userTodo.userIndex === logonIndex) {
+    if (userTodo.userIndex === $logonIndex) {
       accountsTodos = userTodo.todos;
       return true;
     }
   });
 </script>
 
+<Header account={logonAccount} />
 <div class="Board">
     {#each accountsTodos as accountTodo (accountTodo.id)}
         <TodoCard todo={accountTodo}/>

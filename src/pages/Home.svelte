@@ -8,6 +8,6 @@
     {#if $logonIndex === 0 }
         <Login />
     {:else}
-        <TodoBoard logonIndex={$logonIndex} />
+        <TodoBoard />
     {/if}
 </main>
