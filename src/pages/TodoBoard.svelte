@@ -13,7 +13,7 @@
 </script>
 
 <div class="Board">
-    {#each accountsTodos as accountTodo}
+    {#each accountsTodos as accountTodo (accountTodo.id)}
         <TodoCard todo={accountTodo}/>
     {/each}
 </div>
