@@ -1,5 +1,7 @@
 <script lang="ts">
     import Dialog, { Title, Content, Actions } from '@smui/dialog';
+    import Checkbox from '@smui/checkbox';
+    import FormField from '@smui/form-field';
 
     import { logonIndex, accounts, logonAccount } from '../stores/accountStores';
     import ProgressButton from '../component/buttons/ProgressButton.svelte';
@@ -9,8 +11,14 @@
     let id: string = '';
     let pw: string = '';
     let loginFailDialogShow = false;
+    let wantToCreateNewAccount = false;
 
     function tryToLogin() {
+        if (wantToCreateNewAccount) {
+            loginAfterCreateAccount();
+            return true;
+        }
+
         $accounts.some((account) => {
             if (account.id === id && account.password === pw) {
                 $logonIndex = account.index;
@@ -22,6 +30,18 @@
         if ($logonIndex === 0) {
             loginFailDialogShow = true;
         }
+    }
+
+    function loginAfterCreateAccount() {
+        // TODO: 중복체크
+        const account = {
+            index: $accounts.length + 1,
+            id,
+            password: pw,
+        };
+        $accounts = [...$accounts, account];
+        $logonAccount = account;
+        $logonIndex = account.index;
     }
 </script>
 
@@ -42,10 +62,14 @@
                     label="Password"
                     helperText="비밀번호를 입력하세요"
             />
+            <FormField align="end" style="margin-top: -1rem; margin-bottom: 1em; padding-left: 1rem">
+                <Checkbox bind:checked={wantToCreateNewAccount} />
+                <span slot="label" style="color: gray">Do you have not account ? </span>
+            </FormField>
         </div>
         <div>
             <ProgressButton
-                    buttonString="Login"
+                    buttonString={wantToCreateNewAccount ? "SIGN UP" : "LOGIN"}
                     on:click={tryToLogin}
             />
             <DefaultButton

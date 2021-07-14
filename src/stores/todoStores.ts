@@ -42,8 +42,8 @@ const savedUserTodos: UserTodo[] = [
         todos: [
             {
                 id: 2,
-                title: '나오지마!',
-                content: '넌 나오는거 아니야',
+                title: '어?',
+                content: '누구세요..?',
                 createdAt: dayjs('1991-06-26T12:00:00.000Z'),
                 updatedAt: dayjs(),
             },
