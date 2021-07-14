@@ -1,10 +1,7 @@
 <script>
-  import { userTodos } from '../stores/todoStores';
-  import { logonIndex } from '../stores/accountStores';
-  import TodoCard from '../component/cards/TodoCard.svelte';
-  import Header from './page-component/Header.svelte';
-
-  export let logonAccount;
+  import { userTodos } from '../../stores/todoStores';
+  import { logonIndex } from '../../stores/accountStores';
+  import TodoCard from '../../component/cards/TodoCard.svelte';
 
   let accountsTodos = [];
   $userTodos.some((userTodo) => {
@@ -15,7 +12,6 @@
   });
 </script>
 
-<Header account={logonAccount} />
 <div class="Board">
     {#each accountsTodos as accountTodo (accountTodo.id)}
         <TodoCard todo={accountTodo}/>
